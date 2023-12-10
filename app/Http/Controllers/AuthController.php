@@ -49,7 +49,8 @@ class AuthController extends Controller
                 if (Hash::check($request->password, $userData->password)) {
                         $token = $userData->createToken('agdumbagdum')->accessToken;
                         $message = "Login Successfully!";
-                        return response()->json(['token'=> $token,'message'=>$message], 200);
+                        return response()->json(['token'=> $token,'message'=>$message], 200)
+                        ->header('Authorization', $token);
                 }else{
                     return response()->json(['message'=>'email or password incorrect!'], 403);
                 }

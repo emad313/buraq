@@ -24,8 +24,6 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->registerPolicies();
-
         Passport::loadKeysFrom(base_path(config('passport.key_path')));
     }
 }

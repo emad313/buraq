@@ -43,7 +43,7 @@ Route::middleware([
     })->middleware(['auth:api', 'throttle:6,1'])->name('verification.send');
 
     // Authorized routes
-    Route::middleware('auth:api')->group(function(){
+    Route::middleware(['auth:api'])->group(function(){
         // Single User data in tenant
         Route::get('/user', [App\Http\Controllers\AuthController::class, 'userData']);
     });
